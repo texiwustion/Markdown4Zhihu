@@ -1,3 +1,26 @@
+- x ACM训练 - 第二遍三角剖分求面积交  
+	- 策略：分解  
+	- 技术1：三角形与圆的面积交  
+		- 三角形与圆的面积交由 有向扇形面积 和 有向三角形面积组成（继续分解）  
+		- 重要的点有：圆心 O，线段AB的两个端点，线段AB与圆的可能交点，O到AB的垂心  
+		- 通过几个点，能求出所需的面积（继续分解）  
+	- 技术2：多边形剖分为三角形  
+		- 每次迭代一边，多个三角形的有向面积相加，为多边形的有向面积  
+	- 技巧1：圆心O到AB的垂心  
+		- 得到AB rotate 90度之后的向量，与圆心O表示一条通过O的关于AB的垂线  
+		- 求这条垂线与直线AB的交点  
+	- 技巧2：圆心O到AB的最短距离  
+		- 如果垂心E在AB上，那么最短距离为|OE|  
+		- 如果垂心E不在AB上，那么最短距离为 min(|OA|, |OB|)  
+	- 技巧3：圆与线段AB是否有交点  
+		- 求出圆心到AB的最短距离d  
+		- 如果 R< d，那么AB和圆没有交点  
+		- 如果 R =d，那么AB和圆只有一个交点  
+		- 如果AB的端点都在圆外 且 R>d，AB和圆有两个交点  
+	- 技巧4：当AB和圆一定有两个交点时，求这两个交点  
+		- 根据某个性质，可知交点pa, pb 距离垂心E的距离是相同的  
+		- 在 R, |OE|, len 组成的直角三角形中，用勾股定理求出 len  
+		- 求出 (a-b) 和 (b-a) 的单位向量，用 E + 单位向量 * len 得到两个交点  
 	- 技巧5：求旋转向量  
 		-  <img src="https://www.zhihu.com/equation?tex=\pi = \arccos (-1)" alt="\pi = \arccos (-1)" class="ee_img tr_noresize" eeimg="1">   
 		-  <img src="https://www.zhihu.com/equation?tex=(a, b)" alt="(a, b)" class="ee_img tr_noresize" eeimg="1">  旋转  <img src="https://www.zhihu.com/equation?tex=\theta" alt="\theta" class="ee_img tr_noresize" eeimg="1">  之后变成  <img src="https://www.zhihu.com/equation?tex=(a\cos\theta-b\sin\theta, a\sin\theta + b\cos\theta)" alt="(a\cos\theta-b\sin\theta, a\sin\theta + b\cos\theta)" class="ee_img tr_noresize" eeimg="1">   
